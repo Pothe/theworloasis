@@ -21,6 +21,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    border-radius: 20px 0px 0px 0px;
 `
 
 
