@@ -1,0 +1,24 @@
+libraries: styled-components 
+
+how to connect to supabase
+npm install @supabase/supabase-js
+Api Docs => Connect to your project=> installization (copy code to js file)
+get your api = setting =>general => API keys
+
+
+// React QUERY 
+how to install react QUERY
+ npm install @tanstack/react-query@4
+
+npm i @tanstack/react-query-devtools@4
+
+notification 
+npm install react-hot-toast
+
+form hooking
+
+reat-hook-form
+
+
+
+extension style components
