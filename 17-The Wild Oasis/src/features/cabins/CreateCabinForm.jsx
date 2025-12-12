@@ -54,7 +54,7 @@ const Box = styled.div`
 
 `;
 function CreateCabinForm({cabinEdit={}}) {  // edit update value in input by react hook form
-  const {id:cabinEditId,image, ...values}= cabinEdit
+  const {id:cabinEditId, ...values}= cabinEdit
   console.log("value",values)
   
   console.log("from create from cabin", cabinEditId)
