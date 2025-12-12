@@ -20,6 +20,7 @@ const TableRow = styled.div`
 `;
 
 const Img = styled.img`
+padding-left:2px;
   display: block;
   width: 6.4rem;
   border-radius: 2px;
