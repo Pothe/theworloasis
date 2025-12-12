@@ -60,7 +60,8 @@ function CabinRow({cabin}) {
   const[showForm,setshowForm] = useState(false
   )
   const {id,image,name,regularPrice,discount,maxCapacity} = cabin;
-
+  
+ 
   const queryClient = useQueryClient();
 
   const {isLoading:isDeleting, mutate }=useMutation({
@@ -79,7 +80,7 @@ function CabinRow({cabin}) {
 
      <div>Fit up tp {maxCapacity} guests</div>
            <Price>{ formatCurrency(regularPrice) }</Price>
-            <Discount>{ formatCurrency(discount) }</Discount>
+            <Discount>{ discount ==0?"-": formatCurrency(discount) }</Discount>
           <ButtonGroup>
              <Button onClick={()=>setshowForm((show)=>!show)}>Edit</Button>
           <Button disabled={isDeleting} onClick={()=>mutate(id)}>Delete</Button>
