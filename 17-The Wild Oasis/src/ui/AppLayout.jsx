@@ -14,11 +14,12 @@ const Main = styled.main`
     background-color: var(--color-grey-50);
     padding: 2rem 2rem;
     overflow: scroll;
+     border-radius: 20px 0px 0px 0px;
 `
 const Container = styled.div`
     max-width: 120rem;
     margin: 0 auto;
-    border-radius: 20px 0px 0px 0px;
+   
     display: flex;
     flex-direction: column;
     gap: 4rem;
