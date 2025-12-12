@@ -136,7 +136,7 @@ console.log("room name",roomname)
 
       <FormRow>
         <Label htmlFor="maxCapacity">Maximum capacity</Label>
-        <Input type="number" id="maxCapacity" {...register("maxCapacity",{
+        <Input disabled={isEditsession? isEditing: isCreating} type="number" id="maxCapacity" {...register("maxCapacity",{
           required:"this field can not be empty",
           min:{
             value:1,
@@ -149,7 +149,7 @@ console.log("room name",roomname)
 
       <FormRow>
         <Label htmlFor="regularPrice">Regular price</Label>
-        <Input type="number" id="regularPrice" {...register("regularPrice",{required:"this can be blank",min:{
+        <Input   disabled={isEditsession? isEditing: isCreating} type="number" id="regularPrice" {...register("regularPrice",{required:"this can be blank",min:{
           value:1,
           message:"at least 1 in the field"
         }})}
@@ -159,18 +159,18 @@ console.log("room name",roomname)
 
       <FormRow>
         <Label htmlFor="discount">Discount</Label>
-        <Input type="number" id="discount" defaultValue={0} {...register("discount",{required:"this field can not be blank",validate:(value)=> Number(value)  <= Number(getValues().regularPrice) || "Discount should be less than regular price"})} />
+        <Input  disabled={isEditsession? isEditing: isCreating}  type="number" id="discount" defaultValue={0} {...register("discount",{required:"this field can not be blank",validate:(value)=> Number(value)  <= Number(getValues().regularPrice) || "Discount should be less than regular price"})} />
      {errors?.discount?.message && <Error>{` ${errors.discount.message}`}  </Error>}
       </FormRow>
 
       <FormRow>
         <Label htmlFor="description">Description for website</Label>
-        <Textarea type="number" id="description" defaultValue="" {...register("description",)} />
+        <Textarea disabled={isEditsession? isEditing: isCreating}  type="number" id="description" defaultValue="" {...register("description",)} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="image">Cabin photo</Label>
-      <FileInput id="image" type="file" accept="image/*" {...register("image")} />
+      <FileInput disabled={isEditsession? isEditing: isCreating}  id="image" type="file" accept="image/*" {...register("image")} />
        
       </FormRow>
 
