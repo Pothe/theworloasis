@@ -6,9 +6,9 @@ import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import { useForm} from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditCabin } from "../../services/apiCabins";
-import toast from "react-hot-toast";
+import { EditCabin } from "./useEdite";
+import { createCabin } from "./useCreateCabin";
+
 
 const FormRow = styled.div`
   display: grid;
@@ -68,56 +68,24 @@ function CreateCabinForm({cabinEdit={}}) {  // edit update value in input by rea
   } )  
   const {errors}= formState
 
-
+ const {isCreating,iscreateCabin} = createCabin();
+ const {isEditing,isupdateCabin}= EditCabin()
+ 
 
 // insert data to database 
-let roomname;
-console.log("room name",roomname)
-
-  const queryClient =useQueryClient()
-  const{isLoading:isCreating,mutate:createCabin} = useMutation({
-    mutationFn:createEditCabin,
-    onSuccess:()=>{
-      toast.success("One Data has been added successful!")
-      // refresh after insert data successfull
-      queryClient.invalidateQueries({queryKey:["cabins"]})      // 
-      reset()
-
-    },
-    onError:(err)=>{
-      toast.error(err.message)
-    }
-  })
-
   
-  const{isLoading:isEditing,mutate:editCabin} = useMutation({
-    mutationFn:({newDataCabin,id})=>createEditCabin(newDataCabin,id),   
-   
-    onSuccess:()=>{
-      
-      toast.success(` data has been updated successfull `)
-      // refresh after insert data successfull
-      queryClient.invalidateQueries({queryKey:["cabins"]})      // 
-      reset()
-
-    },
-    onError:(err)=>{
-      toast.error(err.message)
-    
-    }
-    
-  })
+  
 
 
   const onsubmit=(data)=>{  
     const image = typeof data.image==="string"?data.image : data.image[0]
 
     if(isEditsession){
-      editCabin({newDataCabin:{ ...data, image:image},id:cabinEditId})    
+      isupdateCabin({newDataCabin:{ ...data, image:image},id:cabinEditId})    
       reset()
 
     }else{
-      createCabin({...data,image:image})
+      iscreateCabin({...data,image:image})
       reset()
 
     }
