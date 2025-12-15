@@ -59,8 +59,8 @@ function CreateCabinForm({cabinEdit={}}) {  // edit update value in input by rea
   
   console.log("from create from cabin", cabinEditId)
   const isEditsession = Boolean(cabinEditId)
-  const isWorking = cabinEdit.discount=0
-  console.log("discount",isWorking)
+ 
+
   const {register,handleSubmit,getValues,reset,formState}=useForm({   
     defaultValues:{
       ...values
