@@ -58,7 +58,8 @@ export async function createEditCabin(newCabin,id){
     console.error(error)
     throw new Error("Can not add data ! Please contact to admin");    
   }
-  // upload image to database 
+  // upload image to database
+  if(hasImagePath) return data
 
 //  const {error:storeError} = await supabase.storage.from('cabins-images').upload(imageName,newCabin.image, {
 //   upsert: true,

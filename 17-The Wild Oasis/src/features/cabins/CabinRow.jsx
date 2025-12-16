@@ -7,6 +7,10 @@ import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 import ButtonGroup from "../../ui/ButtonGroup";
 import { useDeleteCabins } from "./useDelete";
+import { MdOutlineDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { IoCopyOutline } from "react-icons/io5";
+import { createCabin } from "./useCreateCabin";
 
 const TableRow = styled.div`
   display: grid;
@@ -49,21 +53,28 @@ const Discount = styled.div`
 `;
 const Button= styled.button`
 outline-style: none;
-border-radius: 5px;
 border: none;
-background-color: var(--color-red-700);
 text-transform: uppercase;
-color: var(--color-grey-0);
+
   
 `
 
 function CabinRow({cabin}) {
-  const[showForm,setshowForm] = useState(false
-  )
-  const {id,image,name,regularPrice,discount,maxCapacity} = cabin;
-  
- const {isDeleting,deleteCabinItem}= useDeleteCabins()
+  const[showForm,setshowForm] = useState(false )
+   const {isDeleting,deleteCabinItem}= useDeleteCabins()
+   const {isCreating,iscreateCabin}=createCabin()
  
+  const {id,image,name,regularPrice,discount,maxCapacity,description} = cabin;
+
+
+  function handleDublic(){
+    iscreateCabin({
+      name:`copy of ${name}`,
+      maxCapacity,image,regularPrice,discount,description
+    })
+  }
+  
+
   return (
     <>
     <TableRow>
@@ -74,8 +85,9 @@ function CabinRow({cabin}) {
            <Price>{ formatCurrency(regularPrice) }</Price>
             <Discount>{ discount ==0?"-": formatCurrency(discount) }</Discount>
           <ButtonGroup>
-             <Button onClick={()=>setshowForm((show)=>!show)}>Edit</Button>
-          <Button disabled={isDeleting} onClick={()=>deleteCabinItem(id)}>Delete</Button>
+             <Button disabled={isCreating} onClick={handleDublic} ><IoCopyOutline/></Button>
+             <Button onClick={()=>setshowForm((show)=>!show)}><FaEdit /></Button>
+          <Button disabled={isDeleting} onClick={()=>deleteCabinItem(id)}> <MdOutlineDelete/></Button>
           </ButtonGroup>
           
     </TableRow>
