@@ -53,7 +53,7 @@ const Box = styled.div`
   background: ${({ src }) => `url("${src}") center/cover no-repeat`};
 
 `;
-function CreateCabinForm({cabinEdit={}}) {  // edit update value in input by react hook form
+function CreateCabinForm({cabinEdit={},onCloseModal}) {  // edit update value in input by react hook form
   const {id:cabinEditId, ...values}= cabinEdit
   console.log("value",values)
   
@@ -83,10 +83,12 @@ function CreateCabinForm({cabinEdit={}}) {  // edit update value in input by rea
     if(isEditsession){
       isupdateCabin({newDataCabin:{ ...data, image:image},id:cabinEditId})    
       reset()
+       onCloseModal?.()
 
     }else{
       iscreateCabin({...data,image:image})
       reset()
+      onCloseModal?.()
 
     }
   }
@@ -146,7 +148,7 @@ function CreateCabinForm({cabinEdit={}}) {  // edit update value in input by rea
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset" bg="danger" size="small">
+        <Button variation="secondary" type="reset" bg="danger" size="small" onClick={()=>onCloseModal?.()}>
           Cancel
         </Button>
         <Button disabled={isCreating} bg="primary" size="small">{isEditsession?"Save Cabin":"Add CABIN"}</Button>

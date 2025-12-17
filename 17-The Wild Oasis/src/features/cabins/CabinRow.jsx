@@ -12,6 +12,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoCopyOutline } from "react-icons/io5";
 import { createCabin } from "./useCreateCabin";
 
+
 const TableRow = styled.div`
   display: grid;
   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
@@ -91,7 +92,9 @@ function CabinRow({cabin}) {
           </ButtonGroup>
           
     </TableRow>
-    {showForm && <CreateCabinForm cabinEdit={cabin}/>}
+
+ 
+   {showForm && <CreateCabinForm cabinEdit={cabin}/>} 
   </>
   )
   

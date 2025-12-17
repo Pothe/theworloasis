@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import CreateCabinForm from "../features/cabins/CreateCabinForm";
+import { GrClose } from "react-icons/gr";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -48,3 +50,18 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+
+
+
+function Modal({children,onClose}) {
+  return (
+    <Overlay>
+    <StyledModal>
+      <Button onClick={onClose}><GrClose/></Button> 
+      <div>{children}</div>
+    </StyledModal>
+    </Overlay>
+  )
+}
+
+export default Modal
