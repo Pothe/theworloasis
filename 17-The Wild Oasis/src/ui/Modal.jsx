@@ -54,7 +54,7 @@ const Button = styled.button`
 
 function Modal({children,onClose}) {
   return (    
-    <Overlay onClick={onClose}>
+    <Overlay>
     <StyledModal>
       <Button onClick={onClose}><IoClose /></Button> 
       <div>{children}</div>
