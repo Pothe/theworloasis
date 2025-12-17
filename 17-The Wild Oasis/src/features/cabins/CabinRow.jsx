@@ -39,7 +39,9 @@ const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-grey-600);
-  font-family: "Sono";
+  font-family: "Battambang", system-ui;
+  font-weight: 500;
+  font-style: normal
 `;
 
 const Price = styled.div`
