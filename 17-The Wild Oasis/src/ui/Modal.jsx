@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import CreateCabinForm from "../features/cabins/CreateCabinForm";
-import { GrClose } from "react-icons/gr";
+import { IoClose } from "react-icons/io5";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -54,13 +53,13 @@ const Button = styled.button`
 
 
 function Modal({children,onClose}) {
-  return (
-    <Overlay>
+  return (    
+    <Overlay onClick={onClose}>
     <StyledModal>
-      <Button onClick={onClose}><GrClose/></Button> 
+      <Button onClick={onClose}><IoClose /></Button> 
       <div>{children}</div>
     </StyledModal>
-    </Overlay>
+    </Overlay>    
   )
 }
 
