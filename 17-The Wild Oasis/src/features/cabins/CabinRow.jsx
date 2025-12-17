@@ -93,9 +93,7 @@ function CabinRow({cabin}) {
           <Button disabled={isDeleting} onClick={()=>deleteCabinItem(id)}> <MdOutlineDelete/></Button>
           </ButtonGroup>
           
-    </TableRow>
-
- 
+    </TableRow> 
    {showForm && <CreateCabinForm cabinEdit={cabin}/>} 
   </>
   )
