@@ -11,6 +11,7 @@ import { MdOutlineDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { IoCopyOutline } from "react-icons/io5";
 import { createCabin } from "./useCreateCabin";
+import Modal from "../../ui/Modal";
 
 
 const TableRow = styled.div`
@@ -94,7 +95,9 @@ function CabinRow({cabin}) {
           </ButtonGroup>
           
     </TableRow> 
-   {showForm && <CreateCabinForm cabinEdit={cabin}/>} 
+ 
+     {showForm && <Modal><CreateCabinForm cabinEdit={cabin}/></Modal> }  
+
   </>
   )
   
