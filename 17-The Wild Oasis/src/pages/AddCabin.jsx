@@ -8,7 +8,8 @@ function AddCabin(){
         </Modal.Open>
         <Modal.Window name="show-cabin-form">
             <CreateCabinForm/>
-        </Modal.Window>       
+        </Modal.Window>      
+       
     </Modal>
 }
 
