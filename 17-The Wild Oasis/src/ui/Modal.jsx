@@ -52,22 +52,22 @@ const Button = styled.button`
   }
 `;
 
-const ModalContext = createContext()
+ export const ModalContext = createContext()
 
 
 function Modal({children}){
   const [openName, setOpenName] = useState("")
   const close=()=>setOpenName("")
-  const open = setOpenName;
-  return <ModalContext.Provider value={{openName, close,open}}>
+// const openForm = setOpenName;
+ console.log("checked name",openName)
+  return <ModalContext.Provider value={{openName, close,setOpenName}}>
     {children}
   </ModalContext.Provider>
 }
 
 function Open({children,opens:openWidowName}){
-  const {open } = useContext(ModalContext)
-  
-  return cloneElement(children,{onClick:()=>open(openWidowName)})
+  const {setOpenName } = useContext(ModalContext)
+  return cloneElement(children,{onClick:()=>setOpenName(openWidowName)})
 }
 
 function Window({children,name}) {
@@ -81,10 +81,9 @@ function Window({children,name}) {
     </StyledModal>
     </Overlay> ,   
      document.body
-    )
-   
-  
-}
+    ) 
+  }
+
    Modal.Open= Open
    Modal.Window=Window
 

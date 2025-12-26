@@ -8,6 +8,9 @@ import Textarea from "../../ui/Textarea";
 import { useForm} from "react-hook-form";
 import { EditCabin } from "./useEdite";
 import { createCabin } from "./useCreateCabin";
+import { useContext } from "react";
+import { ModalContext } from "../../ui/Modal";
+
 
 
 const FormRow = styled.div`
@@ -54,6 +57,7 @@ const Box = styled.div`
 
 `;
 function CreateCabinForm({cabinEdit={},onCloseModal}) {  // edit update value in input by react hook form
+const {close } = useContext(ModalContext)
   const {id:cabinEditId, ...values}= cabinEdit
   console.log("value",values)
   
@@ -83,12 +87,13 @@ function CreateCabinForm({cabinEdit={},onCloseModal}) {  // edit update value in
     if(isEditsession){
       isupdateCabin({newDataCabin:{ ...data, image:image},id:cabinEditId})    
       reset()
-       onCloseModal?.()
+      //  onCloseModal?.()
+      close?.()
 
     }else{
       iscreateCabin({...data,image:image})
       reset()
-      onCloseModal?.()
+      close?.()
 
     }
   }
@@ -148,7 +153,7 @@ function CreateCabinForm({cabinEdit={},onCloseModal}) {  // edit update value in
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset" bg="danger" size="small" onClick={()=>onCloseModal?.()}>
+        <Button variation="secondary" type="reset" bg="danger" size="small" onClick={()=>close?.()}>
           Cancel
         </Button>
         <Button disabled={isCreating} bg="primary" size="small">{isEditsession?"Save Cabin":"Add CABIN"}</Button>
