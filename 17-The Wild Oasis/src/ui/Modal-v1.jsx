@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
 import { createPortal } from "react-dom";
-import { cloneElement, createContext, useContext, useState } from "react";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -52,40 +51,25 @@ const Button = styled.button`
   }
 `;
 
-const ModalContext = createContext()
 
 
-function Modal({children}){
-  const [openName, setOpenName] = useState("")
-  const close=()=>setOpenName("")
-  const open = setOpenName;
-  return <ModalContext.Provider value={{openName, close,open}}>
-    {children}
-  </ModalContext.Provider>
-}
-
-function Open({children,opens:openWidowName}){
-  const {open } = useContext(ModalContext)
-  
-  return cloneElement(children,{onClick:()=>open(openWidowName)})
-}
-
-function Window({children,name}) {
-  const {openName, close} =useContext(ModalContext)
-  if(name !== openName ) return null
+function Modal({children,onClose}) {
   return  createPortal(     
     <Overlay>
     <StyledModal>
-      <Button onClick={close}><IoClose /></Button> 
+      <Button onClick={onClose}><IoClose /></Button> 
       <div>{children}</div>
     </StyledModal>
     </Overlay> ,   
      document.body
     )
+     
+   
+   
+     
+     
    
   
 }
-   Modal.Open= Open
-   Modal.Window=Window
 
 export default Modal
