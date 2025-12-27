@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
 import { createPortal } from "react-dom";
-import { cloneElement, createContext, useContext, useState } from "react";
+import { cloneElement, createContext, useContext, useEffect, useRef, useState } from "react";
+import { useOutSideClick } from "../hooks/useOutSideClick";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -70,12 +71,14 @@ function Open({children,opens:openWidowName}){
   return cloneElement(children,{onClick:()=>setOpenName(openWidowName)})
 }
 
-function Window({children,name}) {
+function Window({children,name}) { 
   const {openName, close} =useContext(ModalContext)
+   const ref= useOutSideClick(close)
   if(name !== openName ) return null
+
   return  createPortal(     
     <Overlay>
-    <StyledModal>
+    <StyledModal ref={ref}>
       <Button onClick={close}><IoClose /></Button> 
       <div>{children}</div>
     </StyledModal>

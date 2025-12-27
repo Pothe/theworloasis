@@ -19,14 +19,18 @@ function Cabins() {
     <>
     <Row type="horizontal">
       <Heading as="h1">All cabins</Heading>
-      <p>Fiter / sort</p>
-         <AddCabin/>
+      <Row type="horizontal"> <p>Fiter / sort</p>
+      
+      <AddCabin/>
+      </Row>
+      
+        
 
     </Row>
     <Row>
     <Cabintable/>  
- 
-    </Row>
+     </Row>
+     
      </>
   );
 }
