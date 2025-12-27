@@ -11,7 +11,7 @@ import { MdOutlineDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { IoCopyOutline } from "react-icons/io5";
 import { createCabin } from "./useCreateCabin";
-import Modal from "../../ui/Modal";
+
 
 
 const TableRow = styled.div`
@@ -91,20 +91,15 @@ function CabinRow({cabin}) {
           <ButtonGroup>
              <Button disabled={isCreating} onClick={handleDublic} ><IoCopyOutline/></Button>
 
-             <Modal>
-             <Modal.Open opens="edit">
-               <Button ><FaEdit /></Button>
-             </Modal.Open>
-             <Modal.Window name="edit">
-             <CreateCabinForm cabinEdit={cabin}/>
-             </Modal.Window>
-             </Modal>           
+               <Button onClick={()=>setshowForm((show)=>!show)}><FaEdit /></Button>
+          
+           
           <Button disabled={isDeleting} onClick={()=>deleteCabinItem(id)}> <MdOutlineDelete/></Button>
           </ButtonGroup>
           
     </TableRow> 
  
-    
+     {showForm && <Modal><CreateCabinForm cabinEdit={cabin}/></Modal> }  
 
   </>
   )

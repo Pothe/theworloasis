@@ -8,10 +8,11 @@ export function useOutSideClick(handle, listentCapturing=true) {
           console.log("Click outsides")
          handle()    
       }
-      
+
       document.addEventListener("click",handleClick,listentCapturing)
       return ()=>document.removeEventListener("click",handleClick,listentCapturing)    
     },[handle])    
+    
     return ref
 }
 
