@@ -25,6 +25,7 @@ const variations = {
   primary: css`
     color: var(--color-brand-50);
     background-color: var(--color-brand-600);
+    padding: 10px;
 
     &:hover {
       background-color: var(--color-brand-700);
@@ -69,7 +70,7 @@ ${props=>props.type==="md" && css`
   box-shadow:var(--shad-sm);
 
   ${props=>sizes[props.size]}
-  ${props=>variations[props.bg]}
+  ${props=>variations[props.bg] || variations.primary}
 `
 export default Buttton
 

@@ -12,6 +12,7 @@ import { FaEdit } from "react-icons/fa";
 import { IoCopyOutline } from "react-icons/io5";
 import { createCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 
 const TableRow = styled.div`
@@ -64,7 +65,7 @@ text-transform: uppercase;
 `
 
 function CabinRow({cabin}) {
-  const[showForm,setshowForm] = useState(false )
+
    const {isDeleting,deleteCabinItem}= useDeleteCabins()
    const {isCreating,iscreateCabin}=createCabin()
  
@@ -98,8 +99,16 @@ function CabinRow({cabin}) {
              <Modal.Window name="edit">
              <CreateCabinForm cabinEdit={cabin}/>
              </Modal.Window>
-             </Modal>           
-          <Button disabled={isDeleting} onClick={()=>deleteCabinItem(id)}> <MdOutlineDelete/></Button>
+             </Modal>    
+             
+             <Modal>
+             <Modal.Open >
+          <Button> <MdOutlineDelete/></Button>
+          </Modal.Open>
+          <Modal.Window >
+          <ConfirmDelete onConfirm={()=>deleteCabinItem(id)}/>
+          </Modal.Window>
+          </Modal>
           </ButtonGroup>
           
     </TableRow> 

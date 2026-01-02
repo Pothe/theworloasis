@@ -2,15 +2,19 @@ import Button from "../ui/Button"
 import Modal from '../ui/Modal'
 import CreateCabinForm from "../features/cabins/CreateCabinForm"
 function AddCabin(){   
-    return <Modal>
+    return( 
+    <div>
+    <Modal>
         <Modal.Open opens="show-cabin-form">
-            <Button >Add New</Button>
+            <Button  >Add New</Button>
         </Modal.Open>
         <Modal.Window name="show-cabin-form">
             <CreateCabinForm/>
         </Modal.Window>      
        
     </Modal>
+    </div>
+    )
 }
 
 // function AddCabin() {
