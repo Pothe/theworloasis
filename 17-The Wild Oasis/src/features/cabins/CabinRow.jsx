@@ -106,7 +106,7 @@ function CabinRow({cabin}) {
           <Button> <MdOutlineDelete/></Button>
           </Modal.Open>
           <Modal.Window >
-          <ConfirmDelete onConfirm={()=>deleteCabinItem(id)}/>
+          <ConfirmDelete onConfirm={()=>deleteCabinItem(id)} disabled={isDeleting} resourceName={"cabins"}/>
           </Modal.Window>
           </Modal>
           </ButtonGroup>
