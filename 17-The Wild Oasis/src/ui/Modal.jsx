@@ -78,6 +78,7 @@ function Window({children,name}) {
     <Overlay>
     <StyledModal ref={ref}>
       <Button onClick={close}><IoClose /></Button> 
+    
      <div>{cloneElement(children, { onCloseModal: close })}</div>   
     </StyledModal>
 
