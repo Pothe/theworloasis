@@ -99,16 +99,16 @@ function CabinRow({cabin}) {
              <Modal.Window name="edit">
              <CreateCabinForm cabinEdit={cabin}/>
              </Modal.Window>
-             </Modal>    
              
-             <Modal>
-             <Modal.Open >
+             
+          
+             <Modal.Open opens="confirmDelete" >
           <Button> <MdOutlineDelete/></Button>
           </Modal.Open>
-          <Modal.Window >
-          <ConfirmDelete onConfirm={()=>deleteCabinItem(id)} disabled={isDeleting} resourceName={"cabins"}/>
+          <Modal.Window name="confirmDelete" >
+          <ConfirmDelete onConfirm={()=>deleteCabinItem(id)} disabled={isDeleting} resourceName="cabins"/>
           </Modal.Window>
-          </Modal>
+           </Modal> 
           </ButtonGroup>
           
     </TableRow> 
