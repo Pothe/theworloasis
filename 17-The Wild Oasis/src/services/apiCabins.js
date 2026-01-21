@@ -80,7 +80,6 @@ query
   .delete()
   .eq('id',data.id)
 }
-
   return data
 }
 
