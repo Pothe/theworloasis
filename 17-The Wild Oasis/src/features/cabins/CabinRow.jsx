@@ -14,6 +14,8 @@ import { createCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
+import Menus from "../../ui/Menus";
+
 
 
 // const //TableRow = styled.div`
@@ -67,7 +69,7 @@ function CabinRow({cabin}) {
    const {isDeleting,deleteCabinItem}= useDeleteCabins()
    const {isCreating,iscreateCabin}=createCabin()
 
-  const {id,image,name,regularPrice,discount,maxCapacity,description} = cabin;
+  const {id:cabinId,image,name,regularPrice,discount,maxCapacity,description} = cabin;
 
 
   function handleDublic(){
@@ -79,7 +81,8 @@ function CabinRow({cabin}) {
   
 
   return (
-   <div>
+  
+
     <Table.Row>
       <Img src={image}/>
       <Cabin>{name}</Cabin>
@@ -102,13 +105,22 @@ function CabinRow({cabin}) {
           <Button> <MdOutlineDelete/></Button>
           </Modal.Open>
           <Modal.Window name="confirmDelete">
-          <ConfirmDelete onConfirm={()=>deleteCabinItem(id)} disabled={isDeleting} resourceName="This cabin"/>
+          <ConfirmDelete onConfirm={()=>deleteCabinItem(cabinId)} disabled={isDeleting} resourceName="This cabin"/>
           </Modal.Window>
            </Modal> 
+           <Menus.Menu>
+           <Menus.Toggle id={cabinId}/>
+           <Menus.List id={cabinId}>
+           <Menus.Button>Duplicate</Menus.Button>
+            <Menus.Button>Edit</Menus.Button>
+             <Menus.Button>Delete</Menus.Button>
+           </Menus.List>
+
+           </Menus.Menu>
           </ButtonGroup>
           
     </Table.Row> 
-  </div>
+
   )
   
 }

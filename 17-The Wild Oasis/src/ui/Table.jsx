@@ -69,16 +69,19 @@ function Table({columns,children}){
 
 }
 
-function Header({children}){
+function Header({ children }){
   const {columns}= useContext(TableContext)
   return( 
     <StyledHeader role="table" columns={columns} as="header">{children}</StyledHeader>
   )
 }
-function Body({data, render}){
+function Body({data, render }){
    const {columns}= useContext(TableContext)
+
+ if (!data || data.length === 0)return <Empty>No data found in here</Empty>
+
   return( 
-    <StyledBody role="table" columns={columns} >{data.map(render)}</StyledBody>
+    <StyledBody role="table" columns={columns}>{data.map(render)}</StyledBody>
   )
 }
 function Row({children}){
