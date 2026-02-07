@@ -111,7 +111,7 @@ function CabinRow({cabin}) {
            <Menus.Menu>
            <Menus.Toggle id={cabinId}/>
            <Menus.List id={cabinId}>
-           <Menus.Button>Duplicate</Menus.Button>
+           <Menus.Button icon={<FaEdit />} onClick={handleDublic}>Duplicate</Menus.Button>
             <Menus.Button>Edit</Menus.Button>
              <Menus.Button>Delete</Menus.Button>
            </Menus.List>
