@@ -7,9 +7,9 @@ import { formatCurrency } from "../../utils/helpers";
 import CreateCabinForm from "./CreateCabinForm";
 import ButtonGroup from "../../ui/ButtonGroup";
 import { useDeleteCabins } from "./useDelete";
-import { MdOutlineDelete } from "react-icons/md";
+import { MdDeleteOutline, MdOutlineDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import { IoCopyOutline } from "react-icons/io5";
+import { CiEdit } from "react-icons/ci";
 import { createCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
@@ -90,34 +90,41 @@ function CabinRow({cabin}) {
      <div>Fit up tp {maxCapacity} guests</div>
            <Price>{ formatCurrency(regularPrice) }</Price>
             <Discount>{ discount ==0?"-": formatCurrency(discount) }</Discount>
-          <ButtonGroup>
-             <Button disabled={isCreating} onClick={handleDublic} ><IoCopyOutline/></Button>
+        
+            
 
              <Modal>
-             <Modal.Open opens="edit">
-               <Button ><FaEdit /></Button>
-             </Modal.Open>
-             <Modal.Window name="edit">
-             <CreateCabinForm cabinEdit={cabin}/>
-             </Modal.Window>
+            
                 
-             <Modal.Open opens="confirmDelete" >
-          <Button> <MdOutlineDelete/></Button>
-          </Modal.Open>
-          <Modal.Window name="confirmDelete">
-          <ConfirmDelete onConfirm={()=>deleteCabinItem(cabinId)} disabled={isDeleting} resourceName="This cabin"/>
-          </Modal.Window>
-           </Modal> 
+             
+      
            <Menus.Menu>
            <Menus.Toggle id={cabinId}/>
            <Menus.List id={cabinId}>
            <Menus.Button icon={<FaEdit />} onClick={handleDublic}>Duplicate</Menus.Button>
-            <Menus.Button>Edit</Menus.Button>
-             <Menus.Button>Delete</Menus.Button>
+        
+
+            <Modal.Open opens="edit">        
+             <Menus.Button icon={<CiEdit />}>Edite </Menus.Button>
+            </Modal.Open>
+
+             <Modal.Window name="edit">
+             <CreateCabinForm cabinEdit={cabin}/>
+             </Modal.Window>
+             
+           
+
+             <Modal.Open opens="confirmDelete" >
+          <Menus.Button icon={<MdDeleteOutline />}>Delete</Menus.Button>
+          </Modal.Open>
+          <Modal.Window name="confirmDelete">
+          <ConfirmDelete onConfirm={()=>deleteCabinItem(cabinId)} disabled={isDeleting} resourceName="This cabin"/>
+          </Modal.Window>
+             
            </Menus.List>
 
            </Menus.Menu>
-          </ButtonGroup>
+          </Modal> 
           
     </Table.Row> 
 
