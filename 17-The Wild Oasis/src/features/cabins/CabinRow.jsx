@@ -64,10 +64,7 @@ const Discount = styled.div`
 function CabinRow({cabin}) {
    const {isDeleting,deleteCabinItem}= useDeleteCabins()
    const {isCreating,iscreateCabin}=createCabin()
-
   const {id:cabinId,image,name,regularPrice,discount,maxCapacity,description} = cabin;
-
-
   function handleDublic(){
     iscreateCabin({
       name:`copy of ${name}`,
@@ -85,15 +82,8 @@ function CabinRow({cabin}) {
 
      <div>Fit up tp {maxCapacity} guests</div>
            <Price>{ formatCurrency(regularPrice) }</Price>
-            <Discount>{ discount ==0?"-": formatCurrency(discount) }</Discount>
-        
-            
-
+            <Discount>{ discount ==0?"-": formatCurrency(discount) }</Discount>      
              <Modal>
-            
-                
-             
-      
            <Menus.Menu>
            <Menus.Toggle id={cabinId}/>
            <Menus.List id={cabinId}>
