@@ -5,9 +5,9 @@ import { formatCurrency } from "../../utils/helpers";
 // import toast from "react-hot-toast";
 
 import CreateCabinForm from "./CreateCabinForm";
-import ButtonGroup from "../../ui/ButtonGroup";
+
 import { useDeleteCabins } from "./useDelete";
-import { MdDeleteOutline, MdOutlineDelete } from "react-icons/md";
+import { MdDeleteOutline} from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { createCabin } from "./useCreateCabin";
@@ -59,11 +59,7 @@ const Discount = styled.div`
   font-weight: 500;
   color: var(--color-green-700);
 `;
-const Button= styled.button`
-outline-style: none;
-border: none;
-text-transform: uppercase;  
-`
+
 
 function CabinRow({cabin}) {
    const {isDeleting,deleteCabinItem}= useDeleteCabins()
