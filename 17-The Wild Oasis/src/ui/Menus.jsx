@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from "react";
 import styled from "styled-components";
 import { HiDotsVertical } from "react-icons/hi";
 import { createPortal } from "react-dom";
+import { useOutSideClick } from "../hooks/useOutSideClick";
+import { CiLocationArrow1 } from "react-icons/ci";
 
 const Menu = styled.div`
   display: flex;
@@ -107,9 +109,11 @@ function List({id,children}){
 }
 
 function Button({icon,children,onClick}){
+   const {close} = useContext(MenusContext)
+   const ref = useOutSideClick(close)
   return (
   <li>
-    <StyledButton onClick={onClick} ><span>{icon}</span>{children}</StyledButton>
+    <StyledButton ref={ref} onClick={onClick} ><span>{icon}</span>{children}</StyledButton>
   </li>
   )
 }
