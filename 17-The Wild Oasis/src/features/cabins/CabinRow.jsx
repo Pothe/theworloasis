@@ -91,16 +91,20 @@ function CabinRow({cabin}) {
              <Menus.Button icon={<CiEdit />}>Edite </Menus.Button>
             </Modal.Open>
 
-             <Modal.Window name="edit">
-             <CreateCabinForm cabinEdit={cabin}/>
-             </Modal.Window>
-             
-           
-
-          <Modal.Open opens="confirmDelete" >
+            <Modal.Open opens="confirmDelete" >
           <Menus.Button icon={<MdDeleteOutline />}>Delete</Menus.Button>
           </Modal.Open>
+
+
+
+
+             <Modal.Window name="edit">
+             <CreateCabinForm cabinEdit={cabin}/>
+             </Modal.Window>            
+           
+
           
+
           <Modal.Window name="confirmDelete">
           <ConfirmDelete onConfirm={()=>deleteCabinItem(cabinId)} disabled={isDeleting} resourceName="This cabin"/>
           </Modal.Window>
