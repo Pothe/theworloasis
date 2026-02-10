@@ -69,8 +69,7 @@ const StyledButton = styled.button`
 const MenusContext = createContext()
 function Menus({children}) {
   const [openId,setopenId] = useState('')
-  const [position,setposition]= useState(null)
- 
+  const [position,setposition]= useState(null) 
   const close = ()=>setopenId("")
   const open = setopenId
 
@@ -96,14 +95,12 @@ function Toggle({id}){
   </StyledToggle>
 }
 
-function List({id,children}){
+function List({id,children}){   
   const{openId,position,close} = useContext(MenusContext)
-
-   const ref = useOutSideClick(close)
+     const ref = useOutSideClick(close) 
   if(openId !== id) return null;
-
   return createPortal(
-    <StyledList position={position} ref={ref}>{children}</StyledList>
+    <StyledList position={position} ref={ref} >{children}</StyledList>
     ,document.body
   )  
 }

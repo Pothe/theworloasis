@@ -71,12 +71,9 @@ function CabinRow({cabin}) {
       maxCapacity,image,regularPrice,discount,description
     })
   }
-  
 
   return (
-  
-
-    <Table.Row>
+      <Table.Row>
       <Img src={image}/>
       <Cabin>{name}</Cabin>
 
@@ -100,9 +97,10 @@ function CabinRow({cabin}) {
              
            
 
-             <Modal.Open opens="confirmDelete" >
+          <Modal.Open opens="confirmDelete" >
           <Menus.Button icon={<MdDeleteOutline />}>Delete</Menus.Button>
           </Modal.Open>
+          
           <Modal.Window name="confirmDelete">
           <ConfirmDelete onConfirm={()=>deleteCabinItem(cabinId)} disabled={isDeleting} resourceName="This cabin"/>
           </Modal.Window>
