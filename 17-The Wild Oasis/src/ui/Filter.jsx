@@ -38,12 +38,10 @@ const FilterButton = styled.button`
 
 
 
-function Filter() {
-    
+function Filter() {   
   
     const [searchParam, setSearchParam]=useSearchParams()
   function handleClick(value){
-
     searchParam.set("discount",value)
     setSearchParam(searchParam)
 
@@ -54,7 +52,7 @@ function Filter() {
    <StyledFilter>
     <FilterButton onClick={()=>handleClick("all")}>All</FilterButton>
     <FilterButton  onClick={()=>handleClick("discount")}>Discount</FilterButton>
-     <FilterButton  onClick={()=>handleClick("withoutdiscount")}>without-Discount</FilterButton>
+     <FilterButton  onClick={()=>handleClick("no-discount")}>without-Discount</FilterButton>
    </StyledFilter>
   )
 }
