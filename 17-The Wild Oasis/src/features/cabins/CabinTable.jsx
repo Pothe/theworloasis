@@ -45,7 +45,7 @@ function CabinTable() {
 
     if(FilterValue==="discount") FilteredCabin = cabins.filter((cabin)=>cabin.discount>0)
 
-    if(FilterValue==="withoutdiscount") FilteredCabin = cabins.filter((cabin)=>cabin.discount===0)
+    if(FilterValue==="no-discount") FilteredCabin = cabins.filter((cabin)=>cabin.discount===0)
   
  if(isLoading) return <Spinner/>
  
