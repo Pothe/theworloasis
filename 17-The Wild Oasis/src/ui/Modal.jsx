@@ -58,7 +58,7 @@ function Modal({children}){
   const [openName, setOpenName] = useState("")
   const close=()=>setOpenName("")
  const openForm = setOpenName;
- console.log("checked name",openName)
+
   return <ModalContext.Provider value={{openName, close,openForm}}>
     {children}
   </ModalContext.Provider>
