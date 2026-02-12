@@ -1,5 +1,5 @@
 
-import styled from "styled-components";
+
 
 import Spinner from '../../ui/Spinner'
 import CabinRow from './CabinRow'
@@ -46,8 +46,7 @@ function CabinTable() {
         <div>discount</div>
         <div></div>
     </Table.Header>
-    <Table.Body data={FilteredCabin} render={(cabins)=><CabinRow cabin={cabins} key={cabins.id}/>}/> 
-  
+    <Table.Body data={FilteredCabin} render={(cabins)=><CabinRow cabin={cabins} key={cabins.id}/>}/>   
    </Table>
    </Menus>
   )
