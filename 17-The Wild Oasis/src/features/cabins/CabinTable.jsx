@@ -29,8 +29,8 @@ function CabinTable() {
     let FilteredCabin;
     if(FilterValue ==="all") FilteredCabin= cabins ??[]
 
-    if(FilterValue==="discount") FilteredCabin = cabins.filter((cabin)=>cabin.discount>0)
-    if(FilterValue==="no-discount") FilteredCabin = cabins.filter((cabin)=>cabin.discount===0)
+    if(FilterValue==="discount") FilteredCabin = (cabins || []).filter((cabin)=>cabin.discount>0)
+    if(FilterValue==="no-discount") FilteredCabin = (cabins || []).filter((cabin)=>cabin.discount===0)
 
       // 2) sort
 
