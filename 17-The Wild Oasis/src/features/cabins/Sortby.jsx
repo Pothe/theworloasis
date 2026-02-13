@@ -1,9 +1,19 @@
+import { useSearchParams } from "react-router-dom"
 import Select from "../../ui/Select"
+import { set } from "date-fns"
 
 
 function Sortby({options}) {
+    const [searchParams,setSearchParams] = useSearchParams()
+
+    function handleClick(e){
+        searchParams.set("sortBy", e.target.value)
+        setSearchParams(searchParams)
+
+
+    }
     return (
-        <Select options={options}/>
+        <Select options={options} type="white" onChanged={handleClick}/>
     )
 }
 
