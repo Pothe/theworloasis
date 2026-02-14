@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { format, isToday } from "date-fns";
+import { format, isToday} from "date-fns";
 
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
@@ -34,45 +34,44 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
-  booking: {
-    id: bookingId,
-    created_at,
-    startDate,
-    endDate,
-    numNights,
-    numGuests,
-    totalPrice,
-    status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
-  },
-}) {
+
+function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName}, guests:{fullName:guestName,email} ,numNight, totalPrice}}) {
+//   if (!startDate || !endDate) return null;
+//   const start = startDate ? new Date(startDate) : null;
+//   const end = endDate ? new Date(endDate) : null;
+//   console.log(end)
+//   if(isNaN(start) || isNaN(end)) return null
+//  console.log(start)
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
     "checked-out": "silver",
   };
 
+
+
+
   return (
     <Table.Row>
-      <Cabin>{cabinName}</Cabin>
+      <Cabin>{cabinName}</Cabin> 
 
-      <Stacked>
+       <Stacked>
         <span>{guestName}</span>
         <span>{email}</span>
-      </Stacked>
+      </Stacked> 
 
       <Stacked>
         <span>
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}{" "}
-          &rarr; {numNights} night stay
+          &rarr; {numNight} night stay
         </span>
         <span>
-          {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
-          {format(new Date(endDate), "MMM dd yyyy")}
+          {startDate &&
+         format(startDate, "MMM dd yyyy")} &mdash;{" "}
+        {format(endDate, "MMM dd yyyy")}
         </span>
       </Stacked>
 
