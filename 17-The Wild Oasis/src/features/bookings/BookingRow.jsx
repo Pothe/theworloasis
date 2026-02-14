@@ -43,6 +43,8 @@ function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName
 //   if(isNaN(start) || isNaN(end)) return null
 //  console.log(start)
 
+ 
+ 
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -66,7 +68,7 @@ function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}{" "}
-          &rarr; {numNight} night stay
+          &rarr; {numNight} night{numNight >0? "s":""} stay
         </span>
         <span>
           {startDate &&
