@@ -46,14 +46,11 @@ function Filter({filtervalue,options}) {
   function handleClick(value){
     searchParam.set(filtervalue,value)
     setSearchParam(searchParam)
-
-
-
   }
+
   return (
    <StyledFilter>
     {options.map((option)=>
-
      <FilterButton 
       key={option.value}
       onClick={()=>handleClick(option.value)}
