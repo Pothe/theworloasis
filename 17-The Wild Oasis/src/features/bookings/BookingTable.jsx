@@ -11,7 +11,7 @@ function BookingTable() {
   // const booking=[]
  const {Booking, isLoading}= useBooking()
  if(isLoading) return <Spinner/>
-//  if(!Booking.length) return <Empty resource="bookings"/>
+ if(!Booking.length) return <Empty resource="bookings"/>
 
 
   return (
