@@ -9,7 +9,7 @@ export async function getBookings(){
     numNights,
     numGuests,
     totalPrice,
-    cabins(name),guests(fullName,email)`).eq("status","unconfirmed").lte("totalPrice",2000)
+    cabins(name),guests(fullName,email)`).eq("status","unconfirmed").gte("totalPrice",2000)
   if(error){
  console.error(error)
  throw new Error("Bookings not found"); 
