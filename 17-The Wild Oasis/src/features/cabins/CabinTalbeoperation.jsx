@@ -1,6 +1,7 @@
 import Filter from "../../ui/Filter"
+import SortBy from "../../ui/Sortby"
 import TableOperations from "../../ui/TableOperations"
-import Sortby from "./Sortby"
+
 
 
 function CabinTalbeoperation() {
@@ -12,7 +13,7 @@ function CabinTalbeoperation() {
 {value:"discount", label:"discount"},
 {value:"no-discount", label:"no-discount"}
        ]}/>
-       <Sortby options={[
+       <SortBy options={[
         {value:"name-asc",label:"sorted by A-z"},
          {value:"name-desc",label:"sorted by Z-A"},
          {value:"regularPrice-asc",label:"sorted by price(low first)"},
