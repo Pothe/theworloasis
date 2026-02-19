@@ -4,7 +4,7 @@ import supabase from "../services/supabase";
 import Button from "../ui/Button";
 import { subtractDates } from "../utils/helpers";
 
-import { bookings } from "./data-bookings";
+import { Bookings } from "./data-bookings";
 import { cabins } from "./data-cabins";
 import { guests } from "./data-guests";
 
@@ -26,7 +26,7 @@ async function deleteCabins() {
 }
 
 async function deleteBookings() {
-  const { error } = await supabase.from("bookings").delete().gt("id", 0);
+  const { error } = await supabase.from("Bookings").delete().gt("id", 0);
   if (error) console.log(error.message);
 }
 
@@ -53,7 +53,7 @@ async function createBookings() {
     .order("id");
   const allCabinIds = cabinsIds.map((cabin) => cabin.id);
 
-  const finalBookings = bookings.map((booking) => {
+  const finalBookings = Bookings.map((booking) => {
     // Here relying on the order of cabins, as they don't have and ID yet
     const cabin = cabins.at(booking.cabinId - 1);
     const numNights = subtractDates(booking.endDate, booking.startDate);
@@ -96,7 +96,7 @@ async function createBookings() {
 
   console.log(finalBookings);
 
-  const { error } = await supabase.from("bookings").insert(finalBookings);
+  const { error } = await supabase.from("Bookings").insert(finalBookings);
   if (error) console.log(error.message);
 }
 

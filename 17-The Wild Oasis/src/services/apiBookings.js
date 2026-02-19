@@ -6,8 +6,8 @@ export async function getBookings(){
     startDate,
     endDate,   
     status,
-    numNight,
-    numGuest,
+    numNights,
+    numGuests,
     totalPrice,
     cabins(name),guests(fullName,email)`)
   if(error){

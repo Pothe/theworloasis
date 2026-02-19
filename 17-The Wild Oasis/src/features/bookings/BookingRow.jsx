@@ -7,6 +7,7 @@ import Table from "../../ui/Table";
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 
+
 const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
@@ -35,15 +36,16 @@ const Amount = styled.div`
 `;
 
 
-function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName}, guests:{fullName:guestName,email} ,numNight, totalPrice}}) {
-//   if (!startDate || !endDate) return null;
+function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName}, guests:{fullName:guestName,email} ,numNights, totalPrice}}) {
+
+  //   if (!startDate || !endDate) return null;
 //   const start = startDate ? new Date(startDate) : null;
 //   const end = endDate ? new Date(endDate) : null;
 //   console.log(end)
 //   if(isNaN(start) || isNaN(end)) return null
 //  console.log(start)
 
- 
+
  
   const statusToTagName = {
     unconfirmed: "blue",
@@ -68,7 +70,7 @@ function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}{" "}
-          &rarr; {numNight} night{numNight >0? "s":""} stay
+          &rarr; {numNights} night{numNights >0? "s":""} stay
         </span>
         <span>
           {startDate &&
