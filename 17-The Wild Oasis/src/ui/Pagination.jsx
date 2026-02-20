@@ -83,7 +83,7 @@ function PrevPage(){
   
   return (
     <StyledPagination>
-      <p>showing <span>{count}</span> to <span>10</span> <span>of</span><span>30</span> <span>results</span></p>
+      <p>showing <span>{(currentPage-1) *PAGE_SIZE+1}</span> to <span>{currentPage * PAGE_SIZE}</span> <span>of</span> <span>{count}</span> <span>results</span></p>
       
       <Buttons>
        
