@@ -11,6 +11,7 @@ export async function getBookings({filter,sortBy}){
     totalPrice,
     cabins(name),guests(fullName,email)`)
   // filter 
+  // query = query.eq(filter.field, filter.value)
   if(filter !==null) query = query[filter.method || "eq"](filter.field, filter.value)
   const {data:Bookings,error}= await query 
   if(error){
@@ -20,9 +21,7 @@ export async function getBookings({filter,sortBy}){
   return Bookings
 }
 
-
-
-
+// get  Booking by id
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
