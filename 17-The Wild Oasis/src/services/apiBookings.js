@@ -12,7 +12,11 @@ export async function getBookings({filter,sortBy}){
     cabins(name),guests(fullName,email)`)
   // filter 
   // query = query.eq(filter.field, filter.value)
-  if(filter !==null) query = query[filter.method || "eq"](filter.field, filter.value)
+  if(filter) query = query[filter.method || "eq"](filter.field, filter.value)
+
+
+  // sortby 
+  if(sortBy) query= query.order(sortBy.field,{ascending: sortBy.direction==="asc"})
   const {data:Bookings,error}= await query 
   if(error){
  console.error(error)
