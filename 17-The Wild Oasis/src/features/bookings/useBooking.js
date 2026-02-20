@@ -8,11 +8,15 @@ export function useBooking(){
     const filter = !fillterValue || fillterValue==="all"?null:
      {field:"status",value: fillterValue} 
     //{field:"totalPrice",value: 5000,method:"gte"}  
-  
+
+    const sortByRaw = searchParams.get("sortBy") || "startDate-desc"
+    const[field,direction ]= sortByRaw.split("-")
+    const sortBy ={field,direction}
+    
     const {data:Booking,isLoading}=useQuery({
         // filter is independency , it refresh when update value
-        queryKey:["bookings",filter],
-        queryFn: ()=>getBookings({filter})
+        queryKey:["bookings",filter,sortBy],
+        queryFn: ()=>getBookings({filter,sortBy})
 
     })
     return {Booking,isLoading}
