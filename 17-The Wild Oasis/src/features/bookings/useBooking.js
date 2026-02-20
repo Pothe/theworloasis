@@ -3,12 +3,15 @@ import { getBookings } from "../../services/apiBookings";
 import { useSearchParams } from "react-router-dom";
 export function useBooking(){
     const [searchParams]= useSearchParams()
+    // filter 
     const fillterValue = searchParams.get("status")
-    console.log("useBooking",fillterValue)
-    const {data:Booking,error:hasError,isLoading}=useQuery({
-        queryKey:["bookings"],
-        queryFn:getBookings
+    const filter = !fillterValue || fillterValue==="all"?null:{field:"status",value: fillterValue}
+  
+  
+    const {data:Booking,isLoading}=useQuery({
+        queryKey:["bookings",filter],
+        queryFn: ()=>getBookings({filter})
 
     })
-    return {Booking,hasError,isLoading}
+    return {Booking,isLoading}
 }
