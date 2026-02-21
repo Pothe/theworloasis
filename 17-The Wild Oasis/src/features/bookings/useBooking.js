@@ -13,11 +13,12 @@ export function useBooking(){
     const[field,direction ]= sortByRaw.split("-")
     const sortBy ={field,direction}
     
-    const {data:Booking,isLoading}=useQuery({
+    const {data:{Booking,count},isLoading}=useQuery({
         // filter is independency , it refresh when update value
         queryKey:["bookings",filter,sortBy],
         queryFn: ()=>getBookings({filter,sortBy})
 
     })
-    return {Booking,isLoading}
+ 
+  return {  isLoading,Booking,count };
 }

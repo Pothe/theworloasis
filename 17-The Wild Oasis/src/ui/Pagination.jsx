@@ -79,7 +79,7 @@ function PrevPage(){
    setsearchParams(searchParams)
 }
 
-
+if(pageCount <=1 ) return null
   
   return (
     <StyledPagination>

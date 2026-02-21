@@ -76,6 +76,7 @@ function Header({ children }){
   )
 }
 function Body({data, render }){
+ 
    const {columns}= useContext(TableContext)
 
  if (!data || data.length === 0)return <Empty>No data found in here</Empty>
