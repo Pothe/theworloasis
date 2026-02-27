@@ -1,49 +1,12 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getBookings } from "../../services/apiBookings";
-import { useSearchParams } from "react-router-dom";
-import { PAGE_SIZE } from "../../utils/constant";
+import { useQuery } from "@tanstack/react-query";
+import { getBooking } from "../../services/apiBookings";
+import { useParams } from "react-router-dom";
 export function useBooking(){
-  const queryClient = useQueryClient()
-    const [searchParams]= useSearchParams()
-    // filter 
-    const fillterValue = searchParams.get("status")
-    const filter = !fillterValue || fillterValue==="all"?null:
-     {field:"status",value: fillterValue} 
-    //{field:"totalPrice",value: 5000,method:"gte"}  
+    const {bookingId}= useParams() 
+ const {data,isLoading,error}=useQuery({
+    queryKey:['booking'],
+    queryFn:()=>getBooking(bookingId)
+ })
+ return{data,isLoading,error}
 
-    const sortByRaw = searchParams.get("sortBy") || "startDate-desc"
-    const[field,direction ]= sortByRaw.split("-")
-    const sortBy ={field,direction}
-    
-    // pagination
-     const page = Number(searchParams.get("page"))
-     // query 
-    const {data:{data:Booking,count} ={},isLoading}=useQuery({
-        // filter is independency , it refresh when update value
-        queryKey:["bookings",filter,sortBy,page],
-        queryFn: ()=>getBookings({filter,sortBy,page}),
-        structuralSharing:true
-    })
- 
-
-    // pre-fetching
-
-    const PageCount = Math.ceil(count/PAGE_SIZE)
-
-
-    if(page < PageCount)
-    queryClient.prefetchQuery({
-        queryKey:["bookings",filter,sortBy,page +1],
-        queryFn: ()=>getBookings({filter,sortBy,page:page+1}),
-    })
-
-    if(Number(page)>1)
-
-
-    queryClient.prefetchQuery({
-        queryKey:["bookings",filter,sortBy,page -1],
-        queryFn: ()=>getBookings({filter,sortBy,page:page-1}),
-    })
-     
-  return {isLoading,Booking,count};
 }
