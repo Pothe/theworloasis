@@ -34,8 +34,8 @@ const StyledList = styled.ul`
   position: fixed;
 
   background-color: var(--color-grey-0);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--border-radius-sm);
 
   right: ${(props) => props.position.x}px;
   top: ${(props) => props.position.y}px;

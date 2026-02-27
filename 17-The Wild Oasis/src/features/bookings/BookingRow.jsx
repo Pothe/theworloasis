@@ -1,3 +1,5 @@
+import {useNavigate} from 'react-router-dom'
+
 import styled from "styled-components";
 import { format, isToday} from "date-fns";
 
@@ -6,6 +8,8 @@ import Table from "../../ui/Table";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
+import Menus from "../../ui/Menus";
+import { FaEye } from "react-icons/fa";
 
 
 const Cabin = styled.div`
@@ -36,7 +40,7 @@ const Amount = styled.div`
 `;
 
 
-function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName}, guests:{fullName:guestName,email} ,numNights, totalPrice}}) {
+function BookingRow( {booking:{id:BookingId,startDate, endDate, status, cabins:{name:cabinName}, guests:{fullName:guestName,email} ,numNights, totalPrice}}) {
 
   //   if (!startDate || !endDate) return null;
 //   const start = startDate ? new Date(startDate) : null;
@@ -45,6 +49,8 @@ function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName
 //   if(isNaN(start) || isNaN(end)) return null
 //  console.log(start)
 
+
+ const navigate = useNavigate()
 
  
   const statusToTagName = {
@@ -82,6 +88,12 @@ function BookingRow({booking:{startDate, endDate, status, cabins:{name:cabinName
       <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
+      <Menus.Menu>
+        <Menus.Toggle id={BookingId}/>
+        <Menus.List id={BookingId}>
+            <Menus.Button icon={<FaEye/>} onClick={()=>navigate(`/booking/bookings/${BookingId}`)}>see detail</Menus.Button>
+        </Menus.List>
+      </Menus.Menu>
     </Table.Row>
   );
 }

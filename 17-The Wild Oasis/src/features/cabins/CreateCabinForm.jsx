@@ -59,9 +59,7 @@ const Box = styled.div`
 function CreateCabinForm({cabinEdit={},onCloseModal}) {  // edit update value in input by react hook form
 const {close } = useContext(ModalContext)
   const {id:cabinEditId, ...values}= cabinEdit
-  console.log("value",values)
-  
-  console.log("from create from cabin", cabinEditId)
+
   const isEditsession = Boolean(cabinEditId)
  
 
@@ -97,9 +95,7 @@ const {close } = useContext(ModalContext)
 
     }
   }
-
   
-
   function onError(errors){
     console.log(errors)
   }

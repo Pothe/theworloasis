@@ -66,7 +66,7 @@ function Pagination({count}) {
   const [ searchParams, setsearchParams]= useSearchParams()
   const currentPage = !searchParams.get("page")?1: Number(searchParams.get("page"))
   const pageCount = Math.ceil(count / PAGE_SIZE)
-  console.log("pagecount",pageCount)
+
 
 function nextPage(){
    const next = currentPage=== pageCount? currentPage: currentPage+1
@@ -83,7 +83,7 @@ function PrevPage(){
 
 if(pageCount <=1 ) return null
   
-const PageDisplay = currentPage===pageCount
+
 
   return (
     <StyledPagination>
@@ -92,8 +92,8 @@ const PageDisplay = currentPage===pageCount
       <Buttons>
       <PaginationButton onClick={PrevPage} disabled={currentPage===1}> <SlArrowLeft /> <span>previous</span> </PaginationButton>
         
-      {PageDisplay?null: <PaginationButton onClick={nextPage}  
-         disabled={currentPage === pageCount} ><span>next</span>  <SlArrowRight /> </PaginationButton>}
+ <PaginationButton onClick={nextPage}  
+         disabled={currentPage === pageCount} ><span>next</span>  <SlArrowRight /> </PaginationButton>
         
        
       </Buttons>
