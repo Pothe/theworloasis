@@ -11,6 +11,7 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "../bookings/useBooking";
 import Spinner from "../../ui/Spinner";
 
+
 const Box = styled.div`
   /* Box */
   background-color: var(--color-grey-0);
@@ -20,11 +21,12 @@ const Box = styled.div`
 `;
 
 function CheckinBooking() {
-  const {data:booking, isloading}= useBooking()
+
   const moveBack = useMoveBack();
 
   // const booking = {};
-if(isloading) return <Spinner/>
+  const{data:booking,isLoading}=useBooking()
+  if(isLoading) return <Spinner/>
   const {
     id: bookingId,
     guests,
@@ -32,7 +34,7 @@ if(isloading) return <Spinner/>
     numGuests,
     hasBreakfast,
     numNights,
-  } = booking;
+  } = booking || {};
 
   function handleCheckin() {}
 
