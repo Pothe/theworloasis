@@ -10,6 +10,7 @@ import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import Menus from "../../ui/Menus";
 import { FaEye } from "react-icons/fa";
+import { HiArrowCircleDown } from 'react-icons/hi';
 
 
 const Cabin = styled.div`
@@ -92,6 +93,7 @@ function BookingRow( {booking:{id:BookingId,startDate, endDate, status, cabins:{
         <Menus.Toggle id={BookingId}/>
         <Menus.List id={BookingId}>
             <Menus.Button icon={<FaEye/>} onClick={()=>navigate(`/booking/bookings/${BookingId}`)}>see detail</Menus.Button>
+           {status ==="unconfirmed" && <Menus.Button icon={<HiArrowCircleDown/>} onClick={()=>navigate(`/checkedin/${BookingId}`)}>check-in</Menus.Button> } 
         </Menus.List>
       </Menus.Menu>
     </Table.Row>
