@@ -1,6 +1,8 @@
 
 import { BrowserRouter, Navigate,  Route, Routes } from "react-router-dom"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { Toaster } from "react-hot-toast"
 
 import Dashboard from './pages/Dashboard'
 import PageNotFound from './pages/PageNotFound'
@@ -13,9 +15,10 @@ import Setting from './pages/Settings'
 import GlobalStyle from "./styles/GlobalStyle"
 import StyleApp from "./ui/StyledApp"
 import AppLayout from "./ui/AppLayout"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import { Toaster } from "react-hot-toast"
-import BookingDetail from "./features/bookings/BookingDetail"
+
+import Booking from "./pages/Booking"
+import Checkin from "./pages/checkin"
+
 
 
 
@@ -45,7 +48,8 @@ function App() {
         <Route path="dashboard" element={<Dashboard/>}/>
         <Route path="/account" element={<Account/>}/>
         <Route path="/booking" element={<Bookings/>}/>  
-        <Route path="/booking/bookings/:bookingId" element={<BookingDetail/>}/>  
+        <Route path="/booking/bookings/:bookingId" element={<Booking/>}/>  
+        <Route path="/checkedin/:checkinId" element={<Checkin/>}/>
         <Route path="/cabins" element={<Cabin/>}/>
         <Route path="/setting" element={<Setting/>}/>
         <Route path="/users" element={<User/>}/>

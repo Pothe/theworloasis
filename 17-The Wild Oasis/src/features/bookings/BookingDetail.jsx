@@ -11,6 +11,9 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import Empty from "../../ui/Empty";
 import Spinner from "../../ui/Spinner";
+import Buttton from "../../ui/Button";
+import { FaEye } from "react-icons/fa";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const HeadingGroup = styled.div`
@@ -20,19 +23,14 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingDetail() {
-
   // const booking = {};
-  
-
- 
   // const status = "checked-in";
-
   const moveBack = useMoveBack();
+  const navigate = useNavigate()
 const {data:booking,isLoading}= useBooking()
 if(isLoading) return <Spinner/>
 if(!booking) return <Empty resource={"booking"}/>
 const{id, status}=booking
-
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -54,6 +52,9 @@ const{id, status}=booking
       <BookingDataBox booking={booking} />
 
       <ButtonGroup>
+
+       { status ==="unconfirmed" && <Buttton onClick={()=>navigate(`/checkedin/${id}`)}>check in</Buttton>} 
+        
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
