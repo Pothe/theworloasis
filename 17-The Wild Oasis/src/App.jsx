@@ -48,8 +48,8 @@ function App() {
         <Route path="dashboard" element={<Dashboard/>}/>
         <Route path="/account" element={<Account/>}/>
         <Route path="/booking" element={<Bookings/>}/>  
-        <Route path="/booking/bookings/:bookingId" element={<Booking/>}/>  
-        <Route path="/checkedin/:checkinId" element={<Checkin/>}/>
+        <Route path="/booking/bookings/:id" element={<Booking/>}/>  
+        <Route path="/checkedin/:id" element={<Checkin/>}/>
         <Route path="/cabins" element={<Cabin/>}/>
         <Route path="/setting" element={<Setting/>}/>
         <Route path="/users" element={<User/>}/>
