@@ -11,7 +11,7 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "../bookings/useBooking";
 import Spinner from "../../ui/Spinner";
 import Checkbox from "../../ui/Checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const Box = styled.div`
@@ -23,13 +23,14 @@ const Box = styled.div`
 `;
 
 function CheckinBooking() {
-
+  const [confirmPaid, setConfirmPiad] =useState(false)
+    const{data:booking,isLoading}=useBooking()
   const moveBack = useMoveBack();
 
-  // const booking = {};
-  const{data:booking,isLoading}=useBooking()
 
-  const [confirmPaid, setConfirmPiad] =useState(false)
+  useEffect(()=>setConfirmPiad(booking?.isPaid || false),[booking])
+
+  console.log(confirmPaid)
 
   if(isLoading) return <Spinner/>
   const {
@@ -52,7 +53,7 @@ function CheckinBooking() {
 
       <BookingDataBox booking={booking} />
      <Box>
-      <Checkbox checked={confirmPaid} onChange={()=>setConfirmPiad((confirm)=>!confirm)} disabled={confirmPaid} id={bookingId} >I confirm that <b>{guestName}</b> has paid the total amount</Checkbox>
+      <Checkbox checked={confirmPaid} onChange={()=>setConfirmPiad((confirm)=>!confirm)} disabled={confirmPaid} id={confirm} >I confirm that <b>{guestName}</b> has paid the total amount</Checkbox>
      </Box>
 
       <ButtonGroup>
