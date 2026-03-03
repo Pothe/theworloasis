@@ -5,7 +5,8 @@ export function useBooking(){
     const {id}= useParams() 
  const {data,isLoading,error}=useQuery({
     queryKey:['booking'],
-    queryFn:()=>getBooking(id)
+    queryFn:()=>getBooking(id),
+    retry:false
  })
  return{data,isLoading,error}
 

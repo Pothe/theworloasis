@@ -10,6 +10,8 @@ import ButtonText from "../../ui/ButtonText";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "../bookings/useBooking";
 import Spinner from "../../ui/Spinner";
+import Checkbox from "../../ui/Checkbox";
+import { useState } from "react";
 
 
 const Box = styled.div`
@@ -26,10 +28,13 @@ function CheckinBooking() {
 
   // const booking = {};
   const{data:booking,isLoading}=useBooking()
+
+  const [confirmPaid, setConfirmPiad] =useState(false)
+
   if(isLoading) return <Spinner/>
   const {
     id: bookingId,
-    guests,
+    guests:{fullName:guestName},
     totalPrice,
     numGuests,
     hasBreakfast,
@@ -46,9 +51,12 @@ function CheckinBooking() {
       </Row>
 
       <BookingDataBox booking={booking} />
+     <Box>
+      <Checkbox checked={confirmPaid} onChange={()=>setConfirmPiad((confirm)=>!confirm)} disabled={confirmPaid} id={bookingId} >I confirm that <b>{guestName}</b> has paid the total amount</Checkbox>
+     </Box>
 
       <ButtonGroup>
-        <Button onClick={handleCheckin}>Check in booking #{bookingId}</Button>
+        <Button onClick={handleCheckin} disabled={!confirmPaid}>Check in booking #{bookingId}</Button>
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
